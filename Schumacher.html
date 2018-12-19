@@ -1,0 +1,184 @@
+
+<DOCTYPE html>
+<head>
+
+
+
+
+
+<head>
+<!-- 
+
+BUILD 1.0
+
+CHEMGUARD
+
+CANVAS function
+
+
+
+
+
+
+ -->
+<body>
+
+
+
+
+	<svg width="600" height="480">
+		<rect x="0" y="0" width="600" height="480" style="fill:black;"></rect>
+		<!--Top Menus  -->
+			<rect x="0" y="0" width="200" height="80" style="fill:red; stroke:white;stroke-width: 1;"></rect>
+			<rect x="2" y="2" width="196" height="60" style="fill:black; stroke:white;stroke-width: 1;"></rect>
+
+			<rect x="200" y="0" width="200" height="80" style="fill:black; stroke:white;stroke-width: 1;"></rect>
+
+			<rect x="400" y="0" width="200" height="80" style="fill:yellow; stroke:white;stroke-width: 1;"></rect>
+			<rect x="402" y="2" width="196" height="60" style="fill:black; stroke:white;stroke-width: 1;"></rect>
+
+		<!-- middle screen - canvas functionality -->
+			<canvas>
+				
+			</canvas>
+
+		<!-- Bottom Menus -->
+			<rect x="1" y="456" width="200" height="24" style="fill:rgb(200,200,200); stroke:black; 
+			stroke-width: 1;"></rect>
+			<rect x="3" y="458" width="196" height="20" style="fill:rgb(200,200,200); stroke:black; 
+			stroke-width: 1;"></rect>
+
+			<rect x="202" y="456" width="196" height="24" style="fill:rgb(200,200,200); stroke:black; 
+			stroke-width: 1;"></rect>
+			<rect x="204" y="458" width="192" height="20" style="fill:blue; stroke:black; 
+			stroke-width: 1;"></rect>
+
+
+			<rect x="399" y="456" width="200" height="24" style="fill:rgb(200,200,200); stroke:black; 
+			stroke-width: 1;"></rect>
+			<rect x="401
+			" y="458" width="196" height="20" style="fill:rgb(200,200,200); stroke:black; 
+			stroke-width: 1;"></rect>
+
+
+		<rect>
+	</svg>
+
+	<div id="menu">
+		<button>login</button>
+		<button id="power" onclick="power()">ON</button>
+		<button id="poweroff" onclick="Off()">OFF</button>
+		
+
+	</div>
+
+
+
+<script type="text/javascript">
+//ANCHOR: global variables
+var topmenu;  //screen top menu layout
+
+
+//ANCHOR: OBJECTs
+var GUI = { canvas : document.getElementById("screen"),
+					
+					start : function(x, y, model){ //"on" function"
+
+						this.x = x; 
+						this.y = y;
+						this.mod = model;  //array of specs for schumacher
+						this.context = this.canvas.getContext("2d");
+						this.interval = setInterval(GUI.run, 1000);
+						this.power = true;  //simulation is running
+
+					},
+
+					clear : function(){ //redraw function
+
+						this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+					},
+					run : function(){
+
+
+							GUI.clear();
+							topmenu.update();
+
+
+
+					},
+
+					stop : function(){
+
+						clearInterval(this.interval);
+					}
+
+
+
+
+
+}
+
+//layout
+// more complex once I get more models involved
+
+
+
+
+
+
+
+
+
+
+
+//ANCHOR: METHODS
+//testing the functionality of my fake schumacher screen
+function power(){
+
+
+	//initialize layout first
+	topmenu = new menu();  
+	console.log(topmenu);
+	//start the chem cabinet
+
+	GUI.start(0, 0, "generic");
+
+
+}
+function Off(){
+
+	GUI.stop();
+
+}
+
+
+
+
+
+
+</script>
+
+<style>
+canvas{
+
+	margin-top: 201;
+	width: 600;
+	height: 440;
+	background-color: white;
+
+}
+#menu{
+
+	height: 100px;
+	width: 500px;
+
+	background-color: grey;
+
+
+
+	margin-top: 10px;
+}
+
+
+</style>
+</body>
